@@ -25,8 +25,8 @@ const fetchAllMembers = async (guild) => {
     }
 }
 
-const getAnniversaries = (members) => {
-    const anniversaryMembers = members.filter(member => isAnniversary(member.user.createdAt, new Date('2025-01-11')))
+const getAnniversaries = (members, isInTest = false) => {
+    const anniversaryMembers = members.filter(member => isInTest ? testIsAnniversary(member.user.createdAt, new Date('2025-01-11')) : isAnniversary(member.user.createdAt, new Date('2025-01-11')))
 
     const anniversaryList = anniversaryMembers.map(member => {
         const yearsAgo = new Date().getFullYear() - member.user.createdAt.getFullYear();
@@ -72,8 +72,8 @@ export const dailyAnniversaryCheck = async (client) => {
     }
 }
 
-export const anniversaryCommand = async (message) => {
+export const anniversaryCommand = async (message, isInTest = false) => {
     const members = await fetchAllMembers(message.guild);
-    const anniversaryList = getAnniversaries(members);
+    const anniversaryList = getAnniversaries(members, isInTest);
     message.reply(anniversariesMessage(anniversaryList));
 }

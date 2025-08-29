@@ -38,6 +38,15 @@ client.on('messageCreate', async message => {
             message.reply('Could not fetch Discord anniversaries.');
         }
     }
+
+    if (message.content === '!test-anniversary') {
+        try {
+            anniversaryCommand(message, true);
+        } catch (error) {
+            console.error('Error:', error);
+            message.reply('Could not fetch Discord anniversaries.');
+        }
+    }
 });
 
 
