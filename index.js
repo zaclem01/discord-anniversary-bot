@@ -39,7 +39,7 @@ client.on('messageCreate', async message => {
         }
     }
 
-    if (message.content === '!test-anniversary') {
+    if (message.content === '!anniversarytest') {
         try {
             anniversaryCommand(message, true);
         } catch (error) {
