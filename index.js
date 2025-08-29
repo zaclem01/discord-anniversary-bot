@@ -20,7 +20,7 @@ client.once('ready', () => {
     // Schedule a task to run every day at noon
     cron.schedule('0 12 * * *', async () => dailyAnniversaryCheck(client));
     // Testing for every minute
-    cron.schedule('* * * * *', async () => dailyAnniversaryCheck(client));        
+    // cron.schedule('* * * * *', async () => dailyAnniversaryCheck(client));        
 });
 
 client.on('messageCreate', async message => {
