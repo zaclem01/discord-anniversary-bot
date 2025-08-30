@@ -55,8 +55,7 @@ export const dailyAnniversaryCheck = async (client) => {
 
             // Find a general channel to post in
             const channel = guild.channels.cache.find(ch => 
-                ch.name.includes('general') || 
-                ch.name.includes('announcements') ||
+                ch.name.includes('town-of-beginnings') || 
                 ch.type === 0 // Text channel
             );
             

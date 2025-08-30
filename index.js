@@ -29,19 +29,19 @@ client.on('messageCreate', async message => {
     if (message.content === '!test') {
         message.reply('Bot is working!');
     }
-    
-    if (message.content === '!anniversary') {
-        try {
-            anniversaryCommand(message);
-        } catch (error) {
-            console.error('Error:', error);
-            message.reply('Could not fetch Discord anniversaries.');
+     
+    if (message.content === '!anniversary' || message.content === '!anniversarytest') {
+        // Only allow guild admins to use these commands
+        if (!message.member?.permissions?.has('Administrator')) {
+            message.reply('You must be a server admin to use this command.');
+            return;
         }
-    }
-
-    if (message.content === '!anniversarytest') {
         try {
-            anniversaryCommand(message, true);
+            if (message.content === '!anniversary') {
+                anniversaryCommand(message);
+            } else {
+                anniversaryCommand(message, true);
+            }
         } catch (error) {
             console.error('Error:', error);
             message.reply('Could not fetch Discord anniversaries.');
