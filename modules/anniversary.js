@@ -54,7 +54,11 @@ export const dailyAnniversaryCheck = async (client) => {
             const anniversaryList = getAnniversaries(members);
 
             // Find a general channel to post in
-            const channel = guild.channels.cache.find(ch => ch.name.includes('town-of-beginnings') );
+            let channel = guild.channels.cache.find(ch => ch.name.includes('town-of-beginnings'));
+
+            if (!channel) {
+                channel = guild.channels.cache.find(ch => ch.name.includes('general') || ch.type === 0);
+            }
 
             if (channel) {
                 await channel.send(anniversariesMessage(anniversaryList));
