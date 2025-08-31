@@ -14,8 +14,5 @@
     "discord.js": "^14.22.1",
     "dotenv": "^17.2.1",
     "node-cron": "^4.2.1"
-  },
-  "devDependencies": {
-    "wrangler": "^4.33.1"
   }
 }
