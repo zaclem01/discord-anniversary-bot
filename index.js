@@ -47,6 +47,20 @@ client.on('messageCreate', async message => {
             message.reply('Could not fetch Discord anniversaries.');
         }
     }
+
+    if (message.content === '!kill') {
+        // Only allow guild admins to use these commands
+        if (!message.member?.permissions?.has('Administrator')) {
+            // message.reply('You must be a server admin to use this command. Ask them to run it for you.');
+            return;
+        }
+        try {
+            message.reply(`First it was Sachi, and now it's you, ${message.author.username}.`);
+        } catch (error) {
+            console.error('Error:', error);
+            message.reply('No murder today.');
+        }
+    }
 });
 
 
