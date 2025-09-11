@@ -17,6 +17,7 @@ const client = new Client({
 
 client.once('ready', () => {
     console.log(`${client.user.tag} has logged in!`);
+    console.log('successfully finished startup');
     // Schedule a task to run every day at noon
     cron.schedule('0 12 * * *', async () => dailyAnniversaryCheck(client));
     // Testing for every minute
